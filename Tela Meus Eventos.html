@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Tela Meus Eventos</title>
+        <meta charset="UTF-8"/>
+        <script src="jquery.3.js" type="text/javascript"></script>        
+        <link rel="stylesheet" href="bootstrap5/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="CSS geral.css"/>
+        <script type="text/javascript">
+            $(function(){
+                $.get("http://localhost:3000/evento/",function(data,status){
+                    let linha = '';
+                    $.each(data, function(i,item){
+                        linha += '<tr>'
+                        linha += '<td>' + item.nome + '</td>'
+                        linha += '<td>' + item.data + '</td>'
+                        linha += '</tr>'
+                        $('#tabela').empty().append(linha)
+                    });
+                });
+            });
+        </script>
+        <!--rosinha 236, 183, 205-->
+    </head>
+    <body>
+        <header>
+            <a class="btn centro" style="width:100px; display: inline; float: left;" href="Tela 1.html"><img src="voltar.png" style="width: 100px;"></a>
+            <p style="font-size: 80px; text-align: center;">Meus Eventos<img src="tacinhas.png" style="width: 170px; display: inline; float: right;"></p>
+        </header>
+        <br/>
+        <form action="Tela 3.1.php" method="dialog">
+        <div>
+            <div id="divBusca">
+                <input type="text" id="txtBusca" placeholder="Pesquisar"/>
+                <button id="btnBusca"><img src="lupinha.png" style="height: 80px;"/></button>
+            </div>
+            <br/>
+            <div>
+                <selectmenu class="my-select-menu">
+                    <option value="0">Todos</option>
+                    <option value="1">Aniversários</option>
+                    <option value="2">Casamentos</option>
+                    <option value="3">Data ↓</option>
+                </select>
+            </div>
+        </div>
+        <div id="tabela"></div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Tela de busca</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="bootstrap5/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="CSS geral.css"/>
+        <script type="text/javascript" src="jquery.3.js">
+            $(document).ready(function(){
+                $(function(){
+                $.get("http://localhost:3000/evento/",function(data,status){
+                    let linha = '';
+                    $.each(data, function(i,item){
+                        linha += '<tr>'
+                        linha += '<td>' + item.nome + '</td>'
+                        linha += '<td>' + item.data + '</td>'
+                        linha += '</tr>'
+                        $('#tabela').empty().append(linha)
+                    });
+                });
+            });
+        });
+        </script>
+    </head>
+    <body>
+        <header>
+            <a class="btn"style="width:100px; float: left;" href="Tela 3.1.html"><img src="voltar.png" style="width: 100px;"></a>
+            <p style="text-align: center; font-size: 80px; ">Convidados<img src="tacinhas.png" style="width: 170px; float: right;"></p>
+        </header>
+        <br/>
+        <div>
+            <div id="divBusca">
+                <input type="text" id="txtBusca" placeholder="Convidado"/>
+                <button id="btnBusca"><img src="lupinha.png" style="height: 80px;"/></button>
+            </div>
+            <br/>
+            <div id="divBusca">
+                <input type="text" id="txtBusca" placeholder="Mesa"/>
+                <button id="btnBusca"><img src="lupinha.png" style="height: 80px;"/></button>
+            </div>
+        </div>
+        <div id="tabela"></div>
+    </body>
+</html>
